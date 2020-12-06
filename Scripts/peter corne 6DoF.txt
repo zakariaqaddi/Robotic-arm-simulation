@@ -1,0 +1,25 @@
+%% main robotique a six degrés de liberte(6DoF)
+%%%%%%%%%%Peter corne robotics toolbox%%%%%%%%%%%
+% on définit les longeurs de la main selon la methode de DH
+L1=10;
+L2=9;
+L3=9;
+L6=6;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%************L=Link([Th d a alpha])*************
+
+L(1)=Link([0 L1 0  pi/2]);
+L(2)=Link([0 0  L2  0]);
+L(3)=Link([0 0  0  pi/2]);
+L(4)=Link([0 L3 0  pi/2]);
+L(5)=Link([0 0  0  -pi/2]);
+L(6)=Link([0 L6 0  0]);
+
+Robot=SerialLink(L);
+Robot.name='6DoF';
+
+%%%on ecrit dans la fenetre du commande par la suite (Robot) puis entrer
+%%%pour faire un plot
+q1=0;q2=0;q3=0;q4=0;q5=0;q6=0;
+Robot.plot([q1 ,q2 ,q3 ,q4 ,q5, q6])
+
